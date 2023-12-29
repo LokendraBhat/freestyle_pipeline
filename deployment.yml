@@ -5,11 +5,13 @@
     - name: Stopping existing Container
       docker_container:
         name: my_container
+        image: my_img
         state: stopped
 
     - name: Removing stopped Container
       docker_container:
         name: my_container
+        image: my_img
         state: absent
 
     - name: Building Docker image
