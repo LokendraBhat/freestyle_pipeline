@@ -2,6 +2,14 @@
   hosts: localhost
 
   tasks:
+    - name: Building Docker image
+      docker_image:
+        name: my_img
+        source: build
+        build:
+          path: .
+        state: present
+
     - name: Stopping existing Container
       docker_container:
         name: my_container
@@ -13,14 +21,6 @@
         name: my_container
         image: my_img
         state: absent
-
-    - name: Building Docker image
-      docker_image:
-        name: my_img
-        source: build
-        build:
-          path: .
-        state: present
 
     - name: Creating the Container
       docker_container:
